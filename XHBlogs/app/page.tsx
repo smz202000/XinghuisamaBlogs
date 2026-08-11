@@ -14,7 +14,6 @@ import { albums } from '../data/albums';
 import { ToastProvider } from '../components/ToastProvider';
 
 import LatestPostsCarousel from '../components/LatestPostsCarousel';
-import LatestChatterCarousel from '../components/LatestChatterCarousel';
 import DanmakuBackground from '../components/DanmakuBackground';
 
 function formatUpdateTime(dateString: string) {
@@ -130,7 +129,7 @@ export default function Home() {
                   {/* 手机上单列，平板上分3列比例分布 */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full flex-1">
                     <div className="sm:col-span-2 flex flex-col min-h-[200px]">
-                      <LatestChatterCarousel chatters={top5Chatters} />
+                      
                     </div>
                     <div className="sm:col-span-1 flex flex-col min-h-[120px]">
                       <ThemeToggleBlock />
