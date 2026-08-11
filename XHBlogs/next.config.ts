@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // GitHub Pages 静态部署：纯静态导出
+  // GitHub Pages 静态部署：纯静态导出 + 子路径 basePath
   output: 'export',
   trailingSlash: true,
+  basePath: '/XinghuisamaBlogs',
 
   images: {
     unoptimized: true,
