@@ -44,6 +44,11 @@ export default function Comments() {
 
   }, [pathname]);
 
+  // 静态部署无 GitHub OAuth 配置：静默关闭评论区（避免 Gitalk 空配置报错）
+  if (!siteConfig.gitalkConfig.clientID || !siteConfig.gitalkConfig.repo) {
+    return null;
+  }
+
   return (
     <div className="w-full mt-16 relative">
       {/* 🌟 视觉特效：底部环境光晕（保留氛围感） */}

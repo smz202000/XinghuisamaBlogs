@@ -4,16 +4,9 @@ import { Geist, Geist_Mono, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 import BackgroundEffects from "../components/BackgroundEffects";
-import { MusicProvider } from "../components/MusicProvider";
-import FloatingPlayer from "../components/FloatingPlayer";
 import { siteConfig } from "../siteConfig";
 import ClickEffect from "../components/ClickEffect";
 import BackgroundSlider from "../components/BackgroundSlider";
-import GlobalToolbox from "../components/GlobalToolbox";
-import SplashScreen from "../components/SplashScreen";
-import CyberCat from '../components/CyberCat';
-import DanmakuBackground from '../components/DanmakuBackground';
-
 import MobileBackButton from '../components/MobileBackButton';
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -65,11 +58,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="w-screen overflow-x-hidden min-h-full flex flex-col relative transition-colors duration-1000 bg-slate-50 dark:bg-slate-950 font-serif">
         <ThemeProvider>
 
-          <SplashScreen />
-
-          <MusicProvider>
-            <div id="app-mount-root" className="flex-1 flex flex-col transition-opacity duration-1000">
-              <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+          <div id="app-mount-root" className="flex-1 flex flex-col transition-opacity duration-1000">
+            <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
                 {!siteConfig.useGradient && <BackgroundSlider />}
                 <div className="absolute inset-0 z-[-9] bg-white/30 dark:bg-slate-900/40 backdrop-blur-md transition-colors duration-1000"></div>
 
@@ -92,21 +82,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </div>
               </div>
 
-              {/* 隐藏手机端弹幕 */}
-              <div className="hidden md:block">
-                <DanmakuBackground />
-              </div>
-
               <div className="relative z-10 flex-1 flex flex-col">
                 {children}
-              </div>
-
-              <div className="hidden md:block">
-                <FloatingPlayer />
-              </div>
-
-              <div className="hidden md:block">
-                <GlobalToolbox />
               </div>
 
               <div className="md:hidden block">
@@ -125,11 +102,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 50% { background-position: 100% 50%; } 
                 100% { background-position: 0% 50%; } 
               }
-            `}} />
-          </MusicProvider>
-
-          <div className="hidden md:block">
-            <CyberCat />
+            ` }} />
           </div>
 
         </ThemeProvider>
