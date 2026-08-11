@@ -103,7 +103,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 100% { background-position: 0% 50%; } 
               }
             ` }} />
-          </div>
 
         </ThemeProvider>
       </body>
