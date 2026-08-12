@@ -73,6 +73,7 @@ export default function Navbar() {
     { name: '项目', href: '/projects' },
     { name: '归档', href: '/timeline' },
     { name: '照片墙', href: '/photowall' },
+    { name: '音乐', href: '/music' },
     { name: '说说', href: '/moments' },
     { name: '友链', href: '/friends' },
     { name: '关于', href: '/about' },

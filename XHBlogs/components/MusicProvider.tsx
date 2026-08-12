@@ -84,7 +84,8 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     let isMounted = true;
     const fetchMusicData = async () => {
       try {
-        const res = await fetch(`/api/music?ids=${siteConfig.cloudMusicIds.join(',')}`);
+        // 静态部署无后端：改用 Meting 公共 API（CORS 开放）拉网易云歌单
+        const res = await fetch(`https://api.i-meto.com/meting/api?server=netease&type=playlist&id=${siteConfig.musicPlaylistId || siteConfig.cloudMusicIds[0]}`);
         const rawResults = await res.json();
 
         const mergedPlaylist = rawResults
@@ -93,10 +94,10 @@ export function MusicProvider({ children }: { children: ReactNode }) {
             id: song.id || Math.random().toString(),
             title: song.name || '未知歌曲',
             artist: song.artist || song.author || '未知歌手',
-            cover: song.cover || song.pic || 'https://bu.dusays.com/2026/03/24/69c24230a5ff8.jpg',
+            cover: song.cover || song.pic || '/XinghuisamaBlogs/hermes-cover.png',
             src: song.url,
-            lrcUrl: null,
-            lyrics: song.lrc ? parseLrc(song.lrc) : []
+            lrcUrl: (song.lrc && song.lrc.startsWith('http')) ? song.lrc : null,
+            lyrics: (song.lrc && !song.lrc.startsWith('http')) ? parseLrc(song.lrc) : []
           }));
 
         if (isMounted) {

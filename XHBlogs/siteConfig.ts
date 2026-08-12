@@ -30,6 +30,7 @@ export const siteConfig = {
   // 5. 首页照片墙预览图
   photoWallImage: "/XinghuisamaBlogs/hermes-cover.png",
   cloudMusicIds: [],
+  musicPlaylistId: "3778678", // 网易云歌单 ID（Meting API 播放源，可换成你自己的歌单）
   social: {
     github: "smz202000",
     gitee: "",
