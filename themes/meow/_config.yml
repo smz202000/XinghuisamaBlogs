@@ -15,7 +15,7 @@ info:
   # Author Avatar
   avatar: 
   # Datetime of when this website was built
-  start_date: 2024-04-02 22:16:20 # Format should be as same as date_format and time_format of root config
+  start_date: 2026-08-11 20:00:00 # Hermes 博客实际上线时间（2026-08-11）
 
 # Theme Color & Mode
 color:
