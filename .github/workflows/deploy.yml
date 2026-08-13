@@ -17,26 +17,22 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: XHBlogs
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: XHBlogs/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Build (static export)
-        run: npm run build
-      - name: Add .nojekyll (avoid Jekyll processing _next)
-        run: touch out/.nojekyll
+      - name: Generate static site (Hexo)
+        run: npx hexo generate
+      - name: Add .nojekyll
+        run: touch public/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: XHBlogs/out
+          path: public
   deploy:
     environment:
       name: github-pages
